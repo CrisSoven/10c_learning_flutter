@@ -5,41 +5,43 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(16.0),
-      child: Row(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Icon(Icons.add),
-                Text("Bienvenido"),
-                Text("Bienvenido"),
-              ],
+    return const Scaffold(
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Row(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Icon(Icons.add),
+                  Text("Bienvenido"),
+                  Text("Bienvenido"),
+                ],
+              ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Icon(Icons.add),
-                Text("otra línea"),
-                Text("many"),
-              ],
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Icon(Icons.add),
+                  Text("otra línea"),
+                  Text("many"),
+                ],
+              ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Icon(Icons.add),
-                Text("otra línea"),
-                Text("tercer renglón"),
-              ],
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Icon(Icons.add),
+                  Text("otra línea"),
+                  Text("tercer renglón"),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
