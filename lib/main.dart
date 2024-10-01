@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learning_2_10c/navigation/home.dart';
+import 'package:learning_2_10c/navigation/profile.dart';
 import 'package:learning_2_10c/navigation/reservations.dart';
 import 'package:learning_2_10c/navigation/top.dart';
 import 'package:learning_2_10c/widgets/splash_screen.dart';
@@ -21,6 +22,7 @@ class MainApp extends StatelessWidget {
         '/home': (context) => const Home(),
         '/reservations': (context) => const Reservations(),
         '/top': (context) => const Top(),
+        '/profile': (context) => const Profile(),
       },
     );
   }

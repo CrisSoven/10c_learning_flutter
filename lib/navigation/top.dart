@@ -5,6 +5,20 @@ class Top extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Top"),
+        backgroundColor: Colors.blue,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => {
+          Navigator.pushNamed(context, '/home'),
+        },
+        child: const Icon(Icons.chevron_right),
+      ),
+      body: const Center(
+        child: Text("Top"),
+      ),
+    );
   }
 }

@@ -11,11 +11,22 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.blue,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {},
+        onPressed: () => {
+          Navigator.pushNamed(context, '/reservations'),
+        },
         child: const Icon(Icons.chevron_right),
       ),
-      body: const Center(
-        child: Text("Inicio"),
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            const Text("Inicio"),
+            ElevatedButton(
+                onPressed: () => {
+                      Navigator.pushNamed(context, '/profile'),
+                    },
+                child: const Text("Perfil")),
+          ],
+        ),
       ),
     );
   }

@@ -5,6 +5,20 @@ class Reservations extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Reservas"),
+        backgroundColor: Colors.blue,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => {
+          Navigator.pushNamed(context, '/top'),
+        },
+        child: const Icon(Icons.chevron_right),
+      ),
+      body: const Center(
+        child: Text("Reservas"),
+      ),
+    );
   }
 }

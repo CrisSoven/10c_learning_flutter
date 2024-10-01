@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+class Profile extends StatelessWidget {
+  const Profile({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Perfil"),
+        backgroundColor: Colors.blue,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => {
+          Navigator.pushNamed(context, '/home'),
+        },
+        child: const Icon(Icons.chevron_right),
+      ),
+      body: const Center(
+        child: Text("Perfil"),
+      ),
+    );
   }
 }
