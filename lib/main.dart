@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learning_2_10c/modules/auth/login.dart';
 import 'package:learning_2_10c/navigation/home.dart';
 import 'package:learning_2_10c/navigation/navigation.dart';
 import 'package:learning_2_10c/navigation/profile.dart';
@@ -17,13 +18,14 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/menu',
+      initialRoute: '/',
       routes: {
         '/': (context) => const SplashScreen(),
+        '/login': (context) => const Login(),
         '/menu': (context) => const Navigation(),
         '/home': (context) => const Home(),
-        '/reservations': (context) => const Reservations(),
         '/top': (context) => const Top(),
+        '/reservations': (context) => const Reservations(),
         '/profile': (context) => const Profile(),
       },
     );
