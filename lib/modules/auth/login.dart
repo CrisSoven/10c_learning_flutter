@@ -1,74 +1,57 @@
 import 'package:flutter/material.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({super.key});
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _pass = TextEditingController();
+  bool _isOscure = true; // Set to true to start with password obscured
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      /*body: SafeArea(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(child: Text("Primer textPrimer textPrimer textPrimer textPrimer text")),
-                SizedBox(width: 16.0),
-                Expanded(child: Text("Primer text")),
-                SizedBox(width: 16.0),
-                Expanded(child: Text("Primer textPrimer textPrimer textPrimer text")),
-                SizedBox(width: 16.0),
-                Expanded(child: Text("Primer texttext")),
-              ],
-            ),
-          ],
-        ),
-      ),
-      */
-      body: SafeArea(
-        child: Column(
-          children: [
-            const Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(Icons.account_circle_outlined),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/icon_3d.png', width: 150, height: 150),
+              const SizedBox(height: 16),
+              TextFormField(
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: "Correo electrónico",
+                  label: Text("tu@correo.com"),
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Cristopher Soto Ventura",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      "Hace 10 minutos",
-                      style: TextStyle(color: Colors.black45, fontSize: 12.0),
-                    ),
-                  ],
-                ),
-                Spacer(),
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(Icons.more_vert),
-                )
-              ],
-            ),
-            Image.network('https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM='),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Icon(Icons.favorite_border),
-                  Icon(Icons.message_outlined),
-                  Icon(Icons.send_and_archive_outlined),
-                  Spacer(),
-                  Icon(Icons.bookmark_outline)
-                ],
+                keyboardType: TextInputType.emailAddress,
+                controller: _email,
               ),
-            )
-          ],
+              const SizedBox(height: 16),
+              TextFormField(
+                decoration: InputDecoration(
+                  border: const OutlineInputBorder(),
+                  hintText: "········",
+                  label: const Text("Contraseña"),
+                  prefixIcon: IconButton(
+                    onPressed: () => setState(() => _isOscure = !_isOscure),
+                    icon: Icon(
+                      _isOscure
+                          ? Icons.visibility_off_outlined
+                          : Icons.visibility_outlined,
+                    ),
+                  ),
+                ),
+                obscureText: _isOscure,
+                controller: _pass,
+              ),
+            ],
+          ),
         ),
       ),
     );
