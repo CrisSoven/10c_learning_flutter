@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "528884378593",
+    "project_id": "crestaurante-1f084",
+    "storage_bucket": "crestaurante-1f084.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:528884378593:android:ae698535dfe840dcb0c0a0",
+        "android_client_info": {
+          "package_name": "com.example.learning_2_10c"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAARWvpDZYZbLZS9YyKd3p5OrocXgHTxBI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

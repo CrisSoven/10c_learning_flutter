@@ -1,76 +1,116 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({super.key});
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _pass = TextEditingController();
+
+  bool _isObscure = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      /*body: SafeArea(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(child: Text("Primer textPrimer textPrimer textPrimer textPrimer text")),
-                SizedBox(width: 16.0),
-                Expanded(child: Text("Primer text")),
-                SizedBox(width: 16.0),
-                Expanded(child: Text("Primer textPrimer textPrimer textPrimer text")),
-                SizedBox(width: 16.0),
-                Expanded(child: Text("Primer texttext")),
-              ],
-            ),
-          ],
-        ),
-      ),
-      */
-      body: SafeArea(
-        child: Column(
-          children: [
-            const Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(Icons.account_circle_outlined),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+      body: Center(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Center(
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      "Cristopher Soto Ventura",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                    // Image.asset('assets/logo.png', width: 150, height: 150),
+                    const SizedBox(height: 32),
+                    const Text(
+                      "Iniciar sesión",
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                    Text(
-                      "Hace 10 minutos",
-                      style: TextStyle(color: Colors.black45, fontSize: 12.0),
+                    const SizedBox(height: 32),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        isDense: true,
+                        hintText: "tu@correo.com",
+                        label: Text("Correo electrónico"),
+                        prefixIcon: Icon(Icons.email_outlined),
+                      ),
+                      keyboardType: TextInputType.emailAddress,
+                      controller: _email,
+                    ),
+                    const SizedBox(height: 32.0),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(),
+                        isDense: true,
+                        hintText: "········",
+                        label: const Text("Contraseña"),
+                        prefixIcon: const Icon(Icons.lock_open),
+                        suffixIcon: IconButton(
+                          onPressed: () =>
+                              setState(() => _isObscure = !_isObscure),
+                          icon: Icon(
+                            _isObscure
+                                ? Icons.visibility_off_outlined
+                                : Icons.visibility_outlined,
+                          ),
+                        ),
+                      ),
+                      obscureText: _isObscure,
+                      controller: _pass,
+                    ),
+                    const SizedBox(height: 32.0),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () => _login(),
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.black,
+                            foregroundColor: Colors.white),
+                        child: const Text("Iniciar sesión"),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/forgot-password');
+                      },
+                      child: const Text("Recuperar contraseña"),
                     ),
                   ],
                 ),
-                Spacer(),
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(Icons.more_vert),
-                )
-              ],
-            ),
-            Image.network('https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM='),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Icon(Icons.favorite_border),
-                  Icon(Icons.message_outlined),
-                  Icon(Icons.send_and_archive_outlined),
-                  Spacer(),
-                  Icon(Icons.bookmark_outline)
-                ],
               ),
-            )
-          ],
+            ),
+          ),
         ),
       ),
     );
+  }
+  void _login() async {
+    try {
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: _email.text,
+          password: _pass.text
+      );
+
+      print(credential);
+      
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+    }
   }
 }

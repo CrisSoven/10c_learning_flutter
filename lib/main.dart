@@ -1,3 +1,6 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
 import 'package:flutter/material.dart';
 import 'package:learning_2_10c/modules/auth/login.dart';
 import 'package:learning_2_10c/navigation/home.dart';
@@ -7,7 +10,12 @@ import 'package:learning_2_10c/navigation/reservations.dart';
 import 'package:learning_2_10c/navigation/top.dart';
 import 'package:learning_2_10c/widgets/splash_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MainApp());
 }
 
