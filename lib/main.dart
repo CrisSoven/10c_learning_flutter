@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:learning_2_10c/modules/auth/register.dart';
 import 'firebase_options.dart';
 
 import 'package:flutter/material.dart';
@@ -30,6 +31,7 @@ class MainApp extends StatelessWidget {
       routes: {
         '/': (context) => const SplashScreen(),
         '/login': (context) => const Login(),
+        '/register': (context) => const Register(),
         '/menu': (context) => const Navigation(),
         '/home': (context) => const Home(),
         '/top': (context) => const Top(),
