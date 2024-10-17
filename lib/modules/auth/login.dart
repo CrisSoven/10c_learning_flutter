@@ -67,16 +67,16 @@ class _LoginState extends State<Login> {
                         Navigator.pushNamed(context, '/forgot-password');
                       },
                       child: InkWell(
-                          onTap: () =>
-                              Navigator.pushNamed(context, '/register'),
-                          child: const Text(
-                            "Registrarse",
-                            style: TextStyle(
-                              color: Colors.blue,
-                              decoration: TextDecoration.underline,
-                              decorationColor: Colors.blue,
-                            ),
-                          )),
+                        onTap: () => Navigator.pushNamed(context, '/register'),
+                        child: const Text(
+                          "Registrarse",
+                          style: TextStyle(
+                            color: Colors.blue,
+                            decoration: TextDecoration.underline,
+                            decorationColor: Colors.blue,
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:learning_2_10c/kernel/text_field_password.dart';
 
@@ -59,7 +60,7 @@ class _RegisterState extends State<Register> {
                             backgroundColor: Colors.black,
                             foregroundColor: Colors.white,
                           ),
-                          onPressed: () {},
+                          onPressed: () => _register(),
                           child: const Text('Crear cuenta'),
                         ),
                       ),
@@ -72,5 +73,25 @@ class _RegisterState extends State<Register> {
         ),
       ),
     );
+  }
+
+  void _register() async {
+    if (_formKey.currentState!.validate()) return;
+
+    try {
+      final credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _email.text,
+        password: _password.text,
+      );
+
+      print(credential);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+    }
   }
 }
