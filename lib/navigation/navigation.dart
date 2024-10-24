@@ -12,7 +12,7 @@ class Navigation extends StatefulWidget {
 }
 
 class _NavigationState extends State<Navigation> {
-  int _selectedIndex = 3;
+  int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
     Home(),
