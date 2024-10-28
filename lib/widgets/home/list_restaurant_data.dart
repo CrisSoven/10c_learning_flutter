@@ -30,8 +30,7 @@ class ListRestaurantData extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                width: 120,
-                height: 50,
+                height: 80,
                 child: Text(
                   restaurant.description,
                 ),

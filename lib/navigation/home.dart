@@ -77,12 +77,14 @@ class _HomeState extends State<Home> {
         },
         child: const Icon(Icons.chevron_right),
       ),
-      body: ListView.builder(
-          padding: const EdgeInsets.all(8),
-          itemCount: restaurants.length,
-          itemBuilder: (BuildContext context, int index) {
-            return ListRestaurantData(restaurant: restaurants[index]);
-          }),
+      body: ListView.separated(
+        padding: const EdgeInsets.all(8),
+        itemCount: restaurants.length,
+        itemBuilder: (BuildContext context, int index) {
+          return ListRestaurantData(restaurant: restaurants[index]);
+        },
+        separatorBuilder: (BuildContext context, int index) => const Divider(),
+      ),
     );
   }
 }
