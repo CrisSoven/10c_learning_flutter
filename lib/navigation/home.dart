@@ -18,20 +18,21 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
+    _loadData();
+  }
 
-    (() async => {
-          await db.collection("restaurants").get().then((event) {
-            for (var doc in event.docs) {
-              final restaurant = Restaurant(
-                  doc.data()['name'],
-                  doc.data()['description'],
-                  doc.data()['imagenes'],
-                  doc.data()['rating'],
-                  doc.data()['count']);
-              restaurants.add(restaurant);
-            }
-          })
-        });
+  Future<void> _loadData() async {
+    await db.collection("restaurants").get().then((event) {
+      for (var doc in event.docs) {
+        final restaurant = Restaurant(
+            doc.data()['name'],
+            doc.data()['description'],
+            doc.data()['imagenes'],
+            doc.data()['rating'],
+            doc.data()['count']);
+        restaurants.add(restaurant);
+      }
+    });
 
     if (mounted) {
       setState(() => isLoading = false);
@@ -42,7 +43,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     if (isLoading) {
       return const Scaffold(
-        body: CircularProgressIndicator(),
+        body: Center(child: CircularProgressIndicator()),
       );
     }
 
@@ -57,9 +58,39 @@ class _HomeState extends State<Home> {
         },
         child: const Icon(Icons.chevron_right),
       ),
-      body: const Row(
+      body: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(width: 8),
+          Image.network(
+            restaurants[0].imagenes[1],
+            width: 75,
+            height: 75,
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  restaurants[0].name,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  width: 120,
+                  height: 50,
+                  child: Text(
+                    restaurants[0].description,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          StarRating(
+            rating: restaurants[0].rating,
+          ),
         ],
       ),
     );

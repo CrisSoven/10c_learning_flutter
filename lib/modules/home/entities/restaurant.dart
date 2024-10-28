@@ -1,7 +1,7 @@
 class Restaurant {
   final String _name;
   final String _description;
-  final List<String> _imagenes;
+  final List<dynamic> _imagenes;
   final double _rating;
   final int _count;
 
@@ -15,7 +15,7 @@ class Restaurant {
 
   String get name => _name;
   String get description => _description;
-  List<String> get imagenes => _imagenes;
+  List<dynamic> get imagenes => _imagenes;
   double get rating => _rating;
   int get count => _count;
 }
