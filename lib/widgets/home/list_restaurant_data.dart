@@ -23,6 +23,7 @@ class ListRestaurantData extends StatelessWidget {
             restaurant.imagenes[0],
             width: 75,
             height: 75,
+            fit: BoxFit.cover,
           ),
           const SizedBox(width: 10),
           Expanded(
