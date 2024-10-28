@@ -9,39 +9,43 @@ class ListRestaurantData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Image.network(
-          restaurant.imagenes[1],
-          width: 75,
-          height: 75,
-        ),
-        const SizedBox(width: 10),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                restaurant.name,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(
-                height: 80,
-                child: Text(
-                  restaurant.description,
-                ),
-              ),
-            ],
+    return InkWell(
+      onTap: () {},
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Image.network(
+            restaurant.imagenes[1],
+            width: 75,
+            height: 75,
           ),
-        ),
-        StarRating(
-          rating: restaurant.rating,
-        ),
-      ],
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  restaurant.name,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  height: 80,
+                  child: Text(
+                    restaurant.description,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          StarRating(
+            rating: restaurant.rating,
+            size: 16.0,
+          ),
+        ],
+      ),
     );
   }
 }
