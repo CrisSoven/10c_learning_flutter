@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating/flutter_rating.dart';
 import 'package:learning_2_10c/modules/home/entities/restaurant.dart';
+import 'package:learning_2_10c/widgets/home/list_restaurant_data.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -58,41 +58,12 @@ class _HomeState extends State<Home> {
         },
         child: const Icon(Icons.chevron_right),
       ),
-      body: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image.network(
-            restaurants[0].imagenes[1],
-            width: 75,
-            height: 75,
-          ),
-          const SizedBox(width: 10),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  restaurants[0].name,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(
-                  width: 120,
-                  height: 50,
-                  child: Text(
-                    restaurants[0].description,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          StarRating(
-            rating: restaurants[0].rating,
-          ),
-        ],
-      ),
+      body: ListView.builder(
+          padding: const EdgeInsets.all(8),
+          itemCount: restaurants.length,
+          itemBuilder: (BuildContext context, int index) {
+            return ListRestaurantData(restaurant: restaurants[index]);
+          }),
     );
   }
 }

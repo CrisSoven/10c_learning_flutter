@@ -90,8 +90,11 @@ class _LoginState extends State<Login> {
 
   void _login() async {
     try {
-      await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: _email.text, password: _pass.text);
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _email.text,
+        password: _pass.text,
+      );
+      print("${_email.text}, ${_pass.text}");
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         debugPrint('No user found for that email.');
