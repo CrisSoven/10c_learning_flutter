@@ -35,28 +35,8 @@ class _HomeState extends State<Home> {
         setState(() => isLoading = false);
       }
     });
-
-    //_loadData();
   }
 
-  Future<void> _loadData() async {
-    await db.collection("restaurants").get().then((event) {
-      for (var doc in event.docs) {
-        final restaurant = Restaurant(
-          doc.data()['name'],
-          doc.data()['description'],
-          doc.data()['imagenes'],
-          doc.data()['rating'],
-          doc.data()['count'],
-        );
-        restaurants.add(restaurant);
-      }
-    });
-
-    if (mounted) {
-      setState(() => isLoading = false);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {

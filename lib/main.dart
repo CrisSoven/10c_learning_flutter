@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:learning_2_10c/modules/auth/register.dart';
+import 'package:learning_2_10c/modules/home/screens/restaurant_details.dart';
 import 'firebase_options.dart';
 
 import 'package:flutter/material.dart';
@@ -37,6 +38,7 @@ class MainApp extends StatelessWidget {
         '/top': (context) => const Top(),
         '/reservations': (context) => const Reservations(),
         '/profile': (context) => const Profile(),
+        '/restaurant-details': (context) => RestaurantDetails(),
       },
     );
   }
