@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learning_2_10c/navigation/home.dart';
+import 'package:learning_2_10c/navigation/map_sample.dart';
 import 'package:learning_2_10c/navigation/profile.dart';
 import 'package:learning_2_10c/navigation/reservations.dart';
 import 'package:learning_2_10c/navigation/top.dart';
@@ -19,6 +20,7 @@ class _NavigationState extends State<Navigation> {
     Top(),
     Reservations(),
     Profile(),
+    MapSample(),
   ];
 
   @override
@@ -42,6 +44,10 @@ class _NavigationState extends State<Navigation> {
           BottomNavigationBarItem(
             icon: Icon(Icons.person_off_outlined),
             label: 'Perfil',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.map_outlined),
+            label: 'Mapa',
           ),
         ],
         currentIndex: _selectedIndex,
