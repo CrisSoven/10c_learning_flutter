@@ -28,6 +28,7 @@ class _HomeState extends State<Home> {
           doc.data()['imagenes'],
           doc.data()['rating'],
           doc.data()['count'],
+          doc.data()['direction'],
         );
         restaurants.add(restaurant);
       }
