@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:learning_2_10c/modules/auth/register.dart';
 import 'package:learning_2_10c/modules/home/screens/restaurant_details.dart';
+import 'package:learning_2_10c/navigation/tutorial.dart';
 import 'firebase_options.dart';
 
 import 'package:flutter/material.dart';
@@ -33,12 +34,13 @@ class MainApp extends StatelessWidget {
         '/': (context) => const SplashScreen(),
         '/login': (context) => const Login(),
         '/register': (context) => const Register(),
-        '/menu': (context) => const Navigation(),
+        '/menu': (context) => const Navigation(nextBottom: false),
         '/home': (context) => const Home(),
         '/top': (context) => const Top(),
         '/reservations': (context) => const Reservations(),
         '/profile': (context) => const Profile(),
-        '/restaurant-details': (context) => RestaurantDetails(),
+        '/restaurant-details': (context) => const RestaurantDetails(),
+        '/tutorial': (context) => const Tutorial(),
       },
     );
   }

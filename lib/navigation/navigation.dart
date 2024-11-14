@@ -4,9 +4,12 @@ import 'package:learning_2_10c/navigation/map_sample.dart';
 import 'package:learning_2_10c/navigation/profile.dart';
 import 'package:learning_2_10c/navigation/reservations.dart';
 import 'package:learning_2_10c/navigation/top.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Navigation extends StatefulWidget {
-  const Navigation({super.key});
+  final bool nextBottom;
+
+  const Navigation({required this.nextBottom, super.key});
 
   @override
   State<Navigation> createState() => _NavigationState();
@@ -22,6 +25,23 @@ class _NavigationState extends State<Navigation> {
     Profile(),
     MapSample(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _checkTutorial();
+  }
+
+  Future<void> _checkTutorial() async {
+    if (!widget.nextBottom) {
+      final prefs = await SharedPreferences.getInstance();
+      final bool? tutorial = prefs.getBool('tutorial');
+
+      if (tutorial == null) {
+        Navigator.pushReplacementNamed(context, '/tutorial');
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
